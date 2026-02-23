@@ -88,7 +88,7 @@ const SellerDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 md:p-10 mb-20 animate-fadeIn">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-10 mb-20 animate-fadeIn w-full overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <h1 className="text-4xl font-extrabold text-[var(--color-espresso)] font-serif-lux tracking-tight">Seller Hub</h1>
@@ -137,7 +137,7 @@ const SellerDashboard = () => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex gap-4 mb-10 bg-white p-1.5 rounded-2xl shadow-sm w-fit border border-white">
+        <div className="flex overflow-x-auto hide-scrollbar gap-4 mb-10 bg-white p-1.5 rounded-2xl shadow-sm w-full md:w-fit border border-white">
           {["overview", "products", "orders"].map((tab) => (
             <button
               key={tab}

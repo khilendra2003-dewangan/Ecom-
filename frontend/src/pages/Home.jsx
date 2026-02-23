@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../context/ProductContext';
+import { useCart } from '../context/CartContext';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiShoppingCart } from 'react-icons/fi';
 
@@ -13,6 +14,7 @@ const categoryBedroom = "https://images.unsplash.com/photo-1505693314120-0d44386
 
 const Home = () => {
   const { product: products, fetchProduct, category, fetchCategory } = useProduct();
+  const { addToCart } = useCart();
   const { scrollYProgress } = useScroll();
 
   // Parallax effects
@@ -262,14 +264,18 @@ const Home = () => {
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                       />
 
-                      {/* Floating Add icon - Micro Interaction */}
-                      <motion.div
+                      {/* Floating Add icon - Functional & Mobile Visible */}
+                      <motion.button
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileHover={{ scale: 1.1 }}
-                        className="absolute top-4 right-4 bg-white/95 backdrop-blur-md text-[#C5A059] w-12 h-12 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 shadow-xl border border-white"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addToCart(item, 1);
+                        }}
+                        className="absolute top-4 right-4 bg-white/95 backdrop-blur-md text-[#C5A059] w-12 h-12 rounded-2xl flex items-center justify-center opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-500 shadow-xl border border-white z-20"
                       >
                         <FiShoppingCart size={22} strokeWidth={2.5} />
-                      </motion.div>
+                      </motion.button>
                     </div>
 
                     <div className="flex flex-col px-1">
@@ -397,6 +403,19 @@ const Home = () => {
                         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md text-[var(--color-espresso)] text-[9px] font-black uppercase tracking-[2px] px-4 py-1.5 rounded-xl shadow-lg border border-white/50">
                           Best Seller
                         </div>
+
+                        {/* Add to Cart Button */}
+                        <motion.button
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileHover={{ scale: 1.1 }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            addToCart(item, 1);
+                          }}
+                          className="absolute top-4 right-4 bg-white/95 backdrop-blur-md text-[#C5A059] w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center opacity-100 md:opacity-0 group-hover:opacity-100 transition-all duration-500 shadow-xl border border-white z-20"
+                        >
+                          <FiShoppingCart size={18} className="md:w-[22px] md:h-[22px]" strokeWidth={2.5} />
+                        </motion.button>
                       </div>
                       <div className="px-1 text-center">
                         <h3 className="font-serif-lux font-bold text-xl text-[var(--color-espresso)] mb-2 truncate group-hover:text-[#A88748] transition-colors font-serif-lux">{item.name}</h3>

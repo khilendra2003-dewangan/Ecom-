@@ -189,7 +189,7 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-[#F9F8F6] flex font-sans-lux relative overflow-hidden">
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-multiply z-0" style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/stardust.png')` }}></div>
       {/* Sidebar */}
-      <div className="w-72 bg-white border-r border-white p-8 flex flex-col fixed h-full z-10 transition-all">
+      <div className="hidden lg:flex w-72 bg-white border-r border-white p-8 flex-col fixed h-full z-10 transition-all">
         <div className="flex items-center gap-3 mb-12">
           <div className="w-10 h-10 bg-[var(--color-espresso)] rounded-2xl flex items-center justify-center shadow-lg shadow-[var(--color-espresso)]/5">
             <FiShoppingBag className="text-white" size={20} />
@@ -228,7 +228,29 @@ const AdminDashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 ml-72 p-12 overflow-y-auto">
+      <div className="flex-1 lg:ml-72 p-6 lg:p-12 overflow-y-auto w-full">
+
+        {/* Mobile Navigation Bar */}
+        <div className="lg:hidden flex overflow-x-auto hide-scrollbar gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm border border-white/50 w-full mb-6 relative z-10 sticky top-4">
+          {[
+            { id: "overview", label: "Overview", icon: FiGrid },
+            { id: "sellers", label: "Sellers", icon: FiUsers },
+            { id: "products", label: "Moderation", icon: FiPackage },
+            { id: "settings", label: "Catalog", icon: FiSettings },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-xl font-bold transition-all text-xs ${activeTab === tab.id
+                ? "bg-[var(--color-espresso)] text-white shadow-md shadow-[var(--color-espresso)]/5"
+                : "text-gray-500 hover:bg-gray-50 hover:text-[var(--color-espresso)]"
+                }`}
+            >
+              <tab.icon size={16} />
+              <span className="tracking-wide">{tab.label}</span>
+            </button>
+          ))}
+        </div>
         <header className="flex justify-between items-center mb-12">
           <div>
             <h1 className="text-4xl font-black text-[var(--color-espresso)] font-serif-lux tracking-tight">Admin Console</h1>
