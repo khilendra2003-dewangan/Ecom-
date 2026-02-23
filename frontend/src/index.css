@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+:root {
+  --color-champagne: #FDFBFA;
+  /* Extremely light off-white/pearl */
+  --color-gold: #9B8262;
+  /* Muted sophisticated gold/bronze */
+  --color-gold-hover: #7A654C;
+  --color-sand: #F5F3F0;
+  /* Light gray/sand for secondary backgrounds */
+  --color-espresso: #222222;
+  /* Airbnb's signature soft black for high readability */
+  --color-charcoal: #717171;
+  /* Airbnb's signature secondary gray */
+  --color-offblack: #000000;
+  --color-purewhite: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--color-purewhite);
+  color: var(--color-espresso);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Fonts */
+.font-serif-lux {
+  /* For massive, editorial style headers */
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-sans-lux {
+  /* For clean, ultra-readable UI elements */
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Glassmorphism utility - Clean Light Theme */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+}
+
+.glass-panel-dark {
+  /* Kept name for compatibility, but making it a high-contrast dark card within the light theme */
+  background: var(--color-espresso);
+  color: var(--color-purewhite);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Soft Neomorphism (Airbnb Style Subtle Cards) */
+.neo-panel {
+  background: var(--color-purewhite);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.neo-panel:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.neo-panel-inset {
+  background: var(--color-sand);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Claymorphism - Light clean aesthetic */
+.clay-card {
+  background: var(--color-purewhite);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.08),
+    0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.clay-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 35px -5px rgba(0, 0, 0, 0.12),
+    0 10px 15px -5px rgba(0, 0, 0, 0.06);
+}
+
+/* Grainy/Noise Texture - Extremely subtle for light mode */
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  z-index: 50;
+  mix-blend-mode: multiply;
+}
+
+/* Aurora Gradients - Light & Airy */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.aurora-gradient {
+  background: linear-gradient(-45deg, #FFFFFF, #FDFBFA, #F5F3F0, #FAFAFA);
+  background-size: 400% 400%;
+  animation: aurora 20s ease infinite;
+}
+
+/* Kinetic Typography */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.kinetic-text-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.kinetic-text {
+  display: inline-block;
+  animation: marquee 35s linear infinite;
+  padding-right: 2rem;
+  color: var(--color-espresso);
+}
+
+@keyframes marquee-slower {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-slower {
+  animation: marquee-slower 60s linear infinite;
+}
+
+/* Hide Scrollbar Utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Clean Airbnb Style Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-purewhite);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DDDDDD;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-charcoal);
+}
+
+/* Tailwind Theme Variables Mapping */
+@theme {
+  --color-luxe-champagne: #FDFBFA;
+  --color-luxe-gold: #9B8262;
+  --color-luxe-sand: #F5F3F0;
+  --color-luxe-espresso: #222222;
+  --color-luxe-charcoal: #717171;
+  --color-luxe-white: #FFFFFF;
+}
