@@ -7,7 +7,7 @@ import connectDB from "./src/config/db.js";
 import userRouter from "./src/routes/userRouter.js";
 import adminrouter from "./src/routes/adminRoute.js";
 import sellerRouter from "./src/routes/sellerRoute.js";
-import Product from "./src/models/ProductModel.js";
+
 import ProductRoute from "./src/routes/productroute.js";
 import cartRouter from "./src/routes/cartRouter.js";
 import orderRouter from "./src/routes/orderRouter.js";
