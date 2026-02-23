@@ -72,26 +72,26 @@ const Home = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-20 text-center px-8 py-12 md:px-16 md:py-14 max-w-2xl mx-auto flex flex-col items-center bg-white/10 backdrop-blur-md rounded-[2rem] border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.2)] mt-12"
+          className="relative z-20 text-center px-6 py-8 md:px-16 md:py-14 mx-4 md:max-w-2xl md:mx-auto flex flex-col items-center bg-white/10 backdrop-blur-md rounded-[2rem] border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.2)] mt-12"
         >
-          <div className="flex items-center gap-4 mb-6">
-            <p className="text-white uppercase tracking-[0.2em] text-[10px] font-bold">
+          <div className="flex items-center gap-4 mb-4 md:mb-6">
+            <p className="text-white uppercase tracking-[0.2em] text-[8px] md:text-[10px] font-bold">
               Minimalist Collection
             </p>
           </div>
 
-          <h1 className="font-serif-lux text-5xl md:text-7xl text-white leading-[1.05] mb-6 tracking-tight drop-shadow-md">
+          <h1 className="font-serif-lux text-4xl md:text-7xl text-white leading-[1.05] mb-4 md:mb-6 tracking-tight drop-shadow-md">
             Curated<br />
             <span className="italic font-light text-[#E5C07B]">Spaces</span>
           </h1>
 
-          <p className="text-white/90 font-medium text-sm md:text-base max-w-md mx-auto mb-10 leading-relaxed drop-shadow-sm">
+          <p className="text-white/90 font-medium text-xs md:text-base max-w-md mx-auto mb-6 md:mb-10 leading-relaxed drop-shadow-sm">
             Thoughtfully designed pieces. Clean lines, exceptional comfort, and understated elegance.
           </p>
 
           <Link
             to="/product"
-            className="group relative inline-flex items-center justify-center px-10 py-4 bg-white text-[var(--color-espresso)] text-xs uppercase tracking-widest font-bold overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl rounded-full"
+            className="group relative inline-flex items-center justify-center px-8 py-3 md:px-10 md:py-4 bg-white text-[var(--color-espresso)] text-[10px] md:text-xs uppercase tracking-widest font-bold overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl rounded-full"
           >
             Start Exploring
           </Link>
@@ -150,7 +150,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-7 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer h-[320px] md:h-auto aspect-[16/9]"
+            className="md:col-span-7 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer aspect-[4/3] md:aspect-[16/9]"
           >
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-700 z-10" />
             <motion.img
@@ -174,7 +174,7 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-1 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer min-h-[150px] aspect-[16/7]"
+              className="flex-1 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer aspect-[16/9] md:aspect-[16/7]"
             >
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-700 z-10" />
               <motion.img
@@ -194,7 +194,7 @@ const Home = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex-1 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer min-h-[150px] aspect-[16/7]"
+              className="flex-1 relative rounded-[1.5rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.06)] cursor-pointer aspect-[16/9] md:aspect-[16/7]"
             >
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-700 z-10" />
               <motion.img
@@ -213,10 +213,10 @@ const Home = () => {
 
       {/* Soft & Elevated New Arrivals Section */}
       <section className="py-24 px-6 md:px-12 max-w-[90rem] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
           <div>
-            <span className="text-[#C5A059] uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Curated Selection</span>
-            <h2 className="font-serif-lux text-5xl md:text-6xl text-[var(--color-espresso)]">New Arrivals</h2>
+            <span className="text-[#C5A059] uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold mb-3 block">Curated Selection</span>
+            <h2 className="font-serif-lux text-4xl md:text-6xl text-[var(--color-espresso)]">New Arrivals</h2>
           </div>
           <Link to="/product" className="text-[var(--color-espresso)] text-sm font-semibold hover:text-[#C5A059] hover:underline underline-offset-4 transition-all flex items-center gap-2">
             View the Gallery
@@ -364,10 +364,10 @@ const Home = () => {
       {bestSellers.length > 0 && (
         <section className="py-32 bg-[#E8ECE6] relative overflow-hidden">
           <div className="max-w-[90rem] mx-auto px-6 md:px-12 mb-16 relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+            <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6">
               <div>
-                <span className="text-[#C5A059] uppercase tracking-[0.2em] text-xs font-semibold mb-3 block">Most Loved</span>
-                <h2 className="font-serif-lux text-5xl md:text-6xl text-[var(--color-espresso)]">Best Sellers</h2>
+                <span className="text-[#C5A059] uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold mb-3 block">Most Loved</span>
+                <h2 className="font-serif-lux text-4xl md:text-6xl text-[var(--color-espresso)]">Best Sellers</h2>
               </div>
               <Link to="/product" className="text-[var(--color-espresso)] text-sm font-semibold hover:text-[#C5A059] hover:underline underline-offset-4 transition-all flex items-center gap-2">
                 Shop All <span className="text-lg leading-none">→</span>

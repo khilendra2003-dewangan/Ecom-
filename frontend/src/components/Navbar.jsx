@@ -11,6 +11,7 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const handleOnlogout = async () => {
@@ -203,10 +204,36 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile Icon */}
-        <div className={`md:hidden text-2xl cursor-pointer hover:opacity-70 transition-opacity drop-shadow-sm ${isTransparent ? 'text-white' : 'text-[var(--color-espresso)]'}`}>
-          ☰
+        <div
+          className={`md:hidden text-2xl cursor-pointer hover:opacity-70 transition-opacity drop-shadow-sm ${isTransparent ? 'text-white' : 'text-[var(--color-espresso)]'}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
         </div>
       </div>
+
+      {/* Mobile Menu Slide-out */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-black/[0.04] shadow-xl py-6 px-8 flex flex-col gap-6 animate-fade-in-up z-50">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3">Home</Link>
+          <Link to="/product" onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3">Collection</Link>
+          <button onClick={() => { user ? navigate("/cart") : navigate("/login"); setIsMobileMenuOpen(false); }} className="text-left text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3 flex justify-between items-center">
+            Cart {cart.length > 0 && user && <span className="bg-[var(--color-espresso)] text-white text-xs px-2 py-0.5 rounded-full">{cart.length}</span>}
+          </button>
+          <button onClick={() => { user ? navigate("/order") : navigate("/login"); setIsMobileMenuOpen(false); }} className="text-left text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3">Orders</button>
+          {user && user.role === "admin" && (
+            <Link to="/admindashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3">Admin Dashboard</Link>
+          )}
+          {user && user.role === "seller" && (
+            <Link to="/sellerdashboard" onClick={() => setIsMobileMenuOpen(false)} className="text-[var(--color-espresso)] font-medium text-lg border-b border-black/5 pb-3">Atelier Dashboard</Link>
+          )}
+          {user ? (
+            <button onClick={() => { handleOnlogout(); setIsMobileMenuOpen(false); }} className="text-left text-red-600 font-medium text-lg pb-3">Sign Out</button>
+          ) : (
+            <button onClick={() => { navigate("/login"); setIsMobileMenuOpen(false); }} className="text-left text-[var(--color-espresso)] font-bold text-lg pb-3">Sign In</button>
+          )}
+        </div>
+      )}
     </nav>
   );
 };
